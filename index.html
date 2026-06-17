@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr.Rm19 TV Streaming Indonesia</title>
+    <style>
+        /* Desain Dasar Global */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Bagian Header/Navigasi */
+        header {
+            background-color: #161b22;
+            padding: 20px;
+            border-bottom: 2px solid #21262d;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #58a6ff;
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+        }
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #8b949e;
+        }
+        header a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Kontainer Utama */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #58a6ff;
+            font-size: 20px;
+        }
+        
+        .section-title {
+            text-align: left;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #8b949e;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 5px;
+        }
+
+        /* Bingkai Pemutar Video (iFrame Player) */
+        .player-box {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* Rasio Layar 16:9 */
+            height: 0;
+            background-color: #000;
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .player-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Grid Daftar Tombol Channel TV */
+        .playlist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .btn-tv {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 12px 8px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .btn-tv:hover {
+            background-color: #58a6ff;
+            color: #0d1117;
+            border-color: #58a6ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 166, 255, 0.4);
+        }
+        .btn-tv:active {
+            transform: translateY(0);
+        }
+
+        /* Bagian Footer */
+        footer {
+            background-color: #161b22;
+            padding: 15px;
+            margin-top: 50px;
+            border-top: 2px solid #21262d;
+            font-size: 14px;
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mr.Rm19 TV Streaming Indonesia</h1>
+    <p>Dikembangkan oleh: <strong>Mr.Rm19</strong> | GitHub: <a href="https://github.com/Rm19x" target="_blank">github.com/Rm19x</a></p>
+</header>
+
+<div class="container">
+    <h2 id="current-channel">Memutar: CNN Indonesia</h2>
+    
+    <div class="player-box">
+        <iframe id="tv-frame" src="https://www.cnnindonesia.com/tv/embed?smartautoplay=true" allowfullscreen></iframe>
+    </div>
+
+    <div class="section-title">TV Nasional Utama & Hiburan</div>
+    <div class="playlist">
+        <button class="btn-tv" onclick="gantiTV('https://www.cnnindonesia.com/tv/embed?smartautoplay=true', 'CNN Indonesia')">CNN Indonesia</button>
+        <button class="btn-tv" onclick="gantiTV('https://sindikasi.inews.id/embed/video/YWdlbnQ9ZGVza3RvcCZ1cmw9aHR0cHMlM0ElMkYlMkZlbWJlZC5yY3RpcGx1cy5jb20lMkZsaXZlJTJGcmN0aSUyRmluZXdzaWQmaGVpZ2h0PTEwMCUyNSZ3aWR0aD0xMDAlMjU=', 'RCTI')">RCTI</button>
+        <button class="btn-tv" onclick="gantiTV('https://sindikasi.inews.id/embed/video/YWdlbnQ9ZGVza3RvcCZ1cmw9aHR0cHMlM0ElMkYlMkZlbWJlZC5yY3RpcGx1cy5jb20lMkZsaXZlJTJGZ3R2JTJGaW5ld3NpZCZoZWlnaHQ9MTAwJTI1JndpZHRoPTEwMCUyNQ==', 'GTV')">GTV</button>
+        <button class="btn-tv" onclick="gantiTV('https://sindikasi.inews.id/embed/video/YWdlbnQ9ZGVza3RvcCZ1cmw9aHR0cHMlM0ElMkYlMkZlbWJlZC5yY3RpcGx1cy5jb20lMkZsaXZlJTJGaW5ld3MlMkZpbmV3c2lkJmhlaWdodD0xMDAlMjUmd2lkdGg9MTAwJTI1', 'iNews')">iNews</button>
+        <button class="btn-tv" onclick="gantiTV('https://sindikasi.inews.id/embed/video/YWdlbnQ9ZGVza3RvcCZ1cmw9aHR0cHMlM0ElMkYlMkZlbWJlZC5yY3RpcGx1cy5jb20lMkZsaXZlJTJGbW5jdHYlMkZpbmV3c2lkJmhlaWdodD0xMDAlMjUmd2lkdGg9MTAwJTI1', 'MNCTV')">MNCTV</button>
+        <button class="btn-tv" onclick="gantiTV('https://20.detik.com/watch/livestreaming-trans7', 'Trans 7')">Trans 7</button>
+        <button class="btn-tv" onclick="gantiTV('https://20.detik.com/watch/livestreaming-transtv', 'Trans TV')">Trans TV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/204-sctv-tv-stream/embed?autoplay=true&player_only=true&live_chat=false&mute=false&', 'SCTV')">SCTV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/205-indosiar-tv-stream/embed?autoplay=true&player_only=true', 'Indosiar')">Indosiar</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/206-antv-tv-stream/embed?autoplay=true&player_only=true', 'ANTV')">ANTV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/9333-net-tv-stream/embed?autoplay=true&player_only=true', 'NET TV')">NET TV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/212-rtv-tv-stream/embed?autoplay=true&player_only=true', 'RTV')">RTV</button>
+    </div>
+
+    <div class="section-title">TV Berita, Bisnis & Informasi</div>
+    <div class="playlist">
+        <button class="btn-tv" onclick="gantiTV('https://www.cnbcindonesia.com/tv/embed?smartautoplay=true', 'CNBC Indonesia')">CNBC Indonesia</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.dailymotion.com/embed/video/k236ofBIxajxDiti8CY?autoPlay=1&queue-enable=false', 'Metro TV')">Metro TV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.dailymotion.com/embed/video/k46igSmSMGBIiWsXtWk?autoplay=1', 'Kompas TV')">Kompas TV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/782-tvone-tv-stream/embed?autoplay=true&player_only=true', 'TVOne')">TVOne</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.youtube.com/embed/live_stream?channel=UC83b8AtdEyeC8XMMXb9sc9g&autoplay=1', 'Nusantara TV')">Nusantara TV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6334-idx-channel-tv-stream/embed?autoplay=true&player_only=true', 'IDX Channel')">IDX Channel</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.youtube.com/embed/live_stream?channel=UCzNfggb_H7C4S_N0bW9M9Xg&autoplay=1', 'Sindo News TV')">Sindo News TV</button>
+    </div>
+
+    <div class="section-title">TVRI Jaringan & Pendidikan / Religi</div>
+    <div class="playlist">
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6970-tvri-sport-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Sport')">TVRI Sport</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6971-tvri-world-tv-stream/embed?autoplay=true&player_only=true', 'TVRI World')">TVRI World</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.youtube.com/embed/live_stream?channel=UC5m_fAor_m8b08N6uGvshhA&autoplay=1', 'TVMU (Muhammadiyah)')">TVMU</button>
+    </div>
+
+    <div class="section-title">TV Daerah & Budaya</div>
+    <div class="playlist">
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/14352-bali-tv-stream/embed?autoplay=true&player_only=true', 'Bali TV')">Bali TV</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6977-tvri-jakarta-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Jakarta')">TVRI Jakarta</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6979-tvri-jawa-timur-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Jawa Timur')">TVRI Jawa Timur</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6978-tvri-jawa-barat-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Jawa Barat')">TVRI Jawa Barat</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6980-tvri-jawa-tengah-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Jawa Tengah')">TVRI Jawa Tengah</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6981-tvri-yogyakarta-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Yogyakarta')">TVRI Jogja</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6995-tvri-sulawesi-selatan-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Sulawesi Selatan')">TVRI Sulsel</button>
+        <button class="btn-tv" onclick="gantiTV('https://www.vidio.com/live/6982-tvri-sumatera-utara-tv-stream/embed?autoplay=true&player_only=true', 'TVRI Sumatera Utara')">TVRI Sumut</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 <strong>Mr.Rm19 TV Streaming Indonesia</strong>. Hak Cipta Dilindungi.</p>
+</footer>
+
+<script>
+    function gantiTV(url, name) {
+        // Mengubah teks informasi channel di atas video
+        document.getElementById('current-channel').innerText = "Memutar: " + name;
+        // Mengubah sumber alamat link iFrame player
+        document.getElementById('tv-frame').src = url;
+    }
+</script>
+
+</body>
+</html>
